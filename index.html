@@ -4,10 +4,10 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Rocket Game</title>
-		<script src="//cdn.jsdelivr.net/npm/phaser@3.24.1/dist/phaser.js"></script>
+		<script src="./dist/game.js"></script>
 	</head>
 	<body>
-		<div id="rocket-game"></div>
+		<!-- <div id="rocket-game"></div>
 		<script type="text/javascript">
 			var player;
 			var stars;
@@ -144,20 +144,7 @@
 				}
 			}
 
-			function collectStar(player, star) {
-				star.disableBody(true, true);
-
-				//  Add and update the score
-				score += 10;
-				scoreText.setText("Score: " + score);
-
-				if (score >= 20) {
-					this.physics.pause();
-					player.setTint(0x62e035);
-					player.anims.play("turn");
-
-					// gameOver = true;
-				}
+			
 
 				if (stars.countActive(true) === 0) {
 					//  A new batch of stars to collect
@@ -325,6 +312,6 @@
 				scene: [LevelTest, LevelTwo],
 			};
 			var game = new Phaser.Game(config);
-		</script>
+		</script> -->
 	</body>
 </html>

@@ -1,0 +1,24 @@
+{
+  "name": "rocket-to-moon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "levelOne.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MisterRK/rocket-to-moon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MisterRK/rocket-to-moon/issues"
+  },
+  "homepage": "https://github.com/MisterRK/rocket-to-moon#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4",
+    "phaser": "^3.24.1"
+  }
+}

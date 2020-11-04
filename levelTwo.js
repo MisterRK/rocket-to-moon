@@ -1,6 +1,16 @@
-class LevelTwo extends Phaser.Scene {
-	constructor(config) {
-		super(config);
+let player;
+let stars;
+let bombs;
+let platforms;
+let cursors;
+let score = 0;
+let gameOver = false;
+let scoreText;
+
+
+export class LevelTwo extends Phaser.Scene {
+	constructor() {
+		super("LevelTwo");
 	}
 	preload() {
 		this.load.image("sky", "assets/sky.png");
@@ -12,6 +22,7 @@ class LevelTwo extends Phaser.Scene {
 			frameHeight: 48,
 		});
 	}
+
 	create() {
 		//  A simple background for our game
 		this.add.image(400, 300, "sky");
@@ -32,7 +43,7 @@ class LevelTwo extends Phaser.Scene {
 		player = this.physics.add.sprite(100, 450, "dude");
 
 		//  Player physics properties. Give the little guy a slight bounce.
-		player.setBounce(2);
+		player.setBounce(5);
 		player.setCollideWorldBounds(true);
 
 		//  Our player animations, turning, walking left and walking right.
@@ -94,9 +105,36 @@ class LevelTwo extends Phaser.Scene {
 		this.physics.add.overlap(player, stars, collectStar, null, this);
 
 		this.physics.add.collider(player, bombs, hitBomb, null, this);
+
+		function collectStar(player, star) {
+			console.log(scoreText)
+			star.disableBody(true, true);
+		
+			//  Add and update the score
+			score += 10;
+			scoreText.setText("Score: " + score);
+		
+			if (score >= 20) {
+				this.physics.pause();
+				player.setTint(0x62e035);
+				player.anims.play("turn");
+		
+				// gameOver = true;
+			}
+		}
+		function hitBomb(player, bomb) {
+			this.physics.pause();
+
+			player.setTint(0xff0000);
+
+			player.anims.play("turn");
+
+			gameOver = true;
+		}
 	}
 
 	update() {
+		console.log("in the update function")
 		if (gameOver) {
 			return;
 		}
@@ -119,4 +157,6 @@ class LevelTwo extends Phaser.Scene {
 			player.setVelocityY(-100);
 		}
 	}
+
+	
 }
